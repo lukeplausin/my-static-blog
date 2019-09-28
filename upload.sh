@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Blog idea - how to do static site index.html "redirect" without edge lambda?
-
 BUCKET=luke.plaus.in
 BLOG_DIR=blog
 
