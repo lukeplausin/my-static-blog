@@ -1,4 +1,4 @@
-baseURL = "https://luke.plaus.in"
+baseURL = "https://luke.plaus.in/"
 languageCode = "en-us"
 title = "Luke's Blog"
 theme = "ezhil"
