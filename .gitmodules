@@ -1,0 +1,12 @@
+[submodule "blog/themes/hugo-dusk"]
+	path = blog/themes/hugo-dusk
+	url = https://github.com/gyorb/hugo-dusk.git
+[submodule "blog/themes/kube"]
+	path = blog/themes/kube
+	url = https://github.com/jeblister/kube.git
+[submodule "blog/themes/hugo-coder-portfolio"]
+	path = blog/themes/hugo-coder-portfolio
+	url = https://github.com/naro143/hugo-coder-portfolio.git
+[submodule "aws-cf-templates"]
+	path = aws-cf-templates
+	url = https://github.com/widdix/aws-cf-templates.git
