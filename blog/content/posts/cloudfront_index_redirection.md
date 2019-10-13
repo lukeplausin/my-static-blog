@@ -1,26 +1,24 @@
-+++ 
-date = 2019-09-28T01:16:23+01:00
-title = "How to redirect index.html in cloudfront without a lambda function"
-slug = "cloudfront-index-redirect"
-tags = ["tech", "cloudfront", "static"]
-categories = []
-description = "How to 'redirect' to index.html without using a lambda function"
-+++
-
-# How to redirect to `index.html` on a Cloudfront static site without lambda functions
+---
+date: 2019-09-28T01:16:23+01:00
+title: "How to redirect index.html in cloudfront without a lambda function"
+slug: "cloudfront-index-redirect"
+tags: ["tech", "cloudfront", "static"]
+categories: []
+description: "How to 'redirect' to index.html without using a lambda function"
+---
 
 I'm just getting started with my personal blog project. It started in my bedroom with a raspberry pi, then I moved it onto wordpress on Amazon Lightsail. Now I am in the third iteration, experimenting with static site generators.
 
 At some late stage during the deployment of my S3 and cloudfront based site, I realised that the front page was loading fine but most of the links were broken.
 
-{{<figure src="img/tech/bad-index.png">}}
+{{<figure src="/img/tech/bad-index.png">}}
 
 When using static site hosting in S3, the client requests are rewritten to `index.html` at any level in the bucket, however if using cloudfront then this only occurs at the root of the bucket.
 
 The official solution proposed by AWS is to use an edge lambda function to redirect clients, at extra cost.
 
-[Blog post](https://aws.amazon.com/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/)
-[Support article](https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-default-root-object-subdirectory/)
+- [Blog post](https://aws.amazon.com/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/)
+- [Support article](https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-default-root-object-subdirectory/)
 
 ## Is there another way?
 

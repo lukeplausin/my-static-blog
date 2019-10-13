@@ -107,6 +107,7 @@ ddrescue (or gddrescue) is a GNU licensed utility to copy data from a disk which
 
 To run ddrescue you need to have a linux environment. I opted to use a ubuntu live USB. Live CDs (or USBs) are a way of running linux without installing it onto your machine. When you boot from a live medium, the OS is loaded from the medium into memory, but nothing is changed on the hard disk, giving you the option to try Linux before committing, or as in my case allowing you to just run some stuff without making permanent changes. When Ubuntu first boots, you will need to open up the terminal and run some bash commands to install ddrescue:
 
+```bash
 # Elevates permissions
 sudo su
 # Add the APT repository so that you have access to ddrecover (this is not added by default on live installations)
@@ -115,12 +116,15 @@ add-apt-repository universe
 apt update -y
 # Install ddrescue and testdisk
 apt-get install gddrescue testdisk -y
+```
+
 Initially I tried again to recover the partition with TestDisk, thinking that it might behave differently in Linux. Instead I just got the same error. And so onto ddrescue.
 
 The goal is to use ddrescue is to copy as much data from the old damaged hard disk as possible onto a shiny new USB hard disk. Once the data is on the new disk, I can use standard recovery tools to extract what I can without fear of damaging the disk further and making recovery impossible. This is the command I issued:
 
-sudo ddrescue -d /dev/sdb /dev/sdc $HOME/ddrescue.log --force -R
-Important: In this case /dev/sdb was the old broken disk and /dev/sdc was the shiny new one. DO NOT mix these up or you will overwrite your data. They will be named differently in your system, so use a tool to find out which is which. The disk utility in Ubuntu does the job nicely.
+`sudo ddrescue -d /dev/sdb /dev/sdc $HOME/ddrescue.log --force -R`
+
+Important: In this case `/dev/sdb` was the old broken disk and `/dev/sdc` was the shiny new one. DO NOT mix these up or you will overwrite your data. They will be named differently in your system, so use a tool to find out which is which. The disk utility in Ubuntu does the job nicely.
 
 The first time I ran ddrescue it seemed to just hang. The data rate dropped to zero, and nothing happened. Some more Google searches suggested that failed commands can clog up the drive’s command queue. I rebooted the live disk, repeated the setup steps and issued the command again, instead with the reverse option this time (‘-R’). This time it worked! The copy finished after several hours, the log seemed to show that most data was recovered, except just a few sectors towards the start of the disk.
 
