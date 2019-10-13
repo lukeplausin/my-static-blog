@@ -59,7 +59,7 @@ cd ../..
 
 You have to set the `content-type` header, otherwise the browser won't display the page properly!
 
-{{<figure src="img/tech/good-index.png">}}
+{{<figure src="/img/tech/good-index.png">}}
 
 And there we have it! How to redirect to `index.html` without using a lambda function!
 

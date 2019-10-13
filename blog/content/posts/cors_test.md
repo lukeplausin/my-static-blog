@@ -9,7 +9,7 @@ date: 2018-09-25T00:00:00+00:00
 
 I have a lot of photographs and saved in the cloud which I would like to share with the internet! The problem is that I want to do it on the cheap. At the moment all my travel pics and so on are stored in a few different places. I have a NAS drive at home and some stuff stored on Amazon's S3 service. I used to use Google Drive, but now I've moved everything off of there and onto S3.
 
-{{<figure src="https://s3-eu-west-1.amazonaws.com/luke.plaus.in/img/the-cloud.jpg" width="50%">}}
+{{<figure src="/img/the-cloud.jpg" width="50%">}}
 
 ## Google Drive
 It was the most convenient service to use when I was on the move in 2014. Unfortunately there aren’t easy options for sharing. I can share all of my pictures one by one, but the total space is limited to 100GB (I won’t pay for a Terabyte!) and I have to share them one by one.

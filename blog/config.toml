@@ -5,7 +5,6 @@ theme = "ezhil"
 # theme = "hugo-dusk"
 # theme = "hyde"
 
-
 baseurl = "https://luke.plaus.in"
 DefaultContentLanguage = "en"
 
@@ -16,7 +15,8 @@ pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 pygmentsUseClasses = true
 
-disqusShortname = "yourdiscussshortname"
+disqusShortname = "luke_plausin"
+googleAnalytics = "UA-80931735-1"
 
 [params]
     author = "Luke Plausin"
@@ -63,32 +63,22 @@ disqusShortname = "yourdiscussshortname"
     weight = 3
     url = "https://www.linkedin.com/in/lukeplausin/"
 
-[languages]
-    [languages.en]
-        languagecode = "en"
-        languagename = "English" # The language name to be displayed in the selector.
-        title = "Luke Plausin"
+[[menu.main]]
+    name = "Home"
+    weight = 1.0
+    url = "/"
 
-        # You can configure the theme parameter for each language.
-        [languages.en.params]
-            author = "Luke Plausin"
-            info = "Luke's blog and site"
-            description = "Luke's blog and site"
-            keywords = "blog,developer,personal"
+[[menu.main]]
+    name = "About"
+    weight = 2.0
+    url = "/about"
 
-        [languages.en.menu] # It is possible to change the menu too.
+[[menu.main]]
+    name = "Blog"
+    weight = 3.0
+    url = "/posts"
 
-            [[languages.en.menu.main]]
-                name = "Home"
-                weight = 1.0
-                url = "/"
-
-            [[languages.en.menu.main]]
-                name = "About"
-                weight = 2.0
-                url = "/about"
-
-            [[languages.en.menu.main]]
-                name = "Blog"
-                weight = 3.0
-                url = "/posts"
+[[menu.main]]
+    name = "Contact"
+    weight = 4.0
+    url = "/contact"

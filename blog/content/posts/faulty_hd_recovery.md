@@ -5,6 +5,7 @@ slug: "faulty-hd-recovery"
 description: "How I got all the data back from a broken hard disk"
 date: 2018-09-16T00:00:00+00:00
 tags: tech
+comments: true
 ---
 
 I managed to rescue all files from a hard disk with a SMART error. This is a blog about how you can learn from my mistakes.
@@ -34,8 +35,9 @@ Don’t go straight to Photorec – there might be better options.
 Mistake #2: I used photorec first
 ```
 
-Step 1: Diagnosis
-Connecting the disk
+# Step 1: Diagnosis
+
+## Connecting the disk
 
 The sick patient
 All I got handed to me was this: a regular 3.5 inch hard disk. I had no idea what filesystem was on there, how it was partitioned or used. The label said that it was a 750GB WD brand disk.
@@ -82,7 +84,9 @@ Doctor’s Diagnosis
 Soft SMART error
 Damaged MBR
 Partitions unknown
-Step 2: Triage
+
+# Step 2: Triage
+
 Having read about TestDisk previously, I thought this would be a good approach to take. TestDisk is a disk and partition recovery tool which is maintained by the same group who maintain PhotoRec. You can run it natively from windows, and use it to detect and repair partitions.
 
 Analysis with TestDisk
@@ -125,68 +129,11 @@ ddrescue when it works
 Do not try to mount the disk or use other tools before using ddrescue. If ddrescue fails the first time, then try rebooting the system and running again with the ‘R’ flag.
 
 #5 I tried to mount the disk
-Step 3: Recovery
+
+# Step 3: Recovery
 With the data stored on another volume, I tried using TestDisk again. The partition map was still broken so I tried a partition scan. Unlike the first few tries on the old disk, it found an NTFS partition almost immediately. Then it was just a case of rewriting the master boot record.
 
 
 Once the MBR is written, I shut down and booted back to Windows. The filesystem was automatically mounted, and the files were visible and all there. A quick run of checkdisk fixed a few filesystem errors and verified that everything was in order. It seems that I managed to get everything back! All the pictures and photos, and not in such a messy format either. All in all a much better result than the first time around!
 
 Anyway thats it for now. If this guide helped you, then please write something in the comments section! Or if you’re having trouble write something and maybe I can help. Good luck!
-
-luke | January 29, 2019 | No Comments
-My own Cloud migration
-My own Cloud migration
-Last month I was lucky enough to move house. In the rush to pack everything into boxes and hire a moving company this blog was one of the last things on my mind. And so, unfortunately my Raspberry Pi has stayed in the cupboard for the best part of a month, and because of this my blog has been offline for about as long. I didn’t really think about it until I met my friend Frosty and he mentioned my post about the band. Someone actually read my blog! Who would have thought? And then I remembered the Pi sitting in my drawer, my blog dead…
-
-As an IT professional, I owe it to myself to have a working personal site. So I’ve decided to take my own advice upgrade to the cloud!
-
-
-When Amazon launched their Lightsail service about a couple of years ago, I didn’t take much notice of it. It’s not really aimed at the enterprise customers who I normally deal with, and you can normally get the same functionality out of marketplace AMIs with EC2. However, for my own project, the pricing is rather good. AWS offer you a basic VPS (virtual private server) with 20Gb of SSD storage for as little as $3.50 per month. This is about half the price of standard EC2 – the simple monthly calculator comes to $6.44 / mo when using a t3.nano with 20Gb of GP2 storage (I no longer qualify for free tier).
-
-Setting up was fairly easy. When you log into the AWS console and find the lightsail service, you get redirected to a much simplified console. AWS are clearly targeting Lightsail towards hobbyists, novices and people who don’t want to know the inner workings of EC2.
-
-IP addresses and DNS
-
-Rather than pay extra for a static IP address I chose to continue using DuckDNS in the same way as on my Raspberry Pi. I would run a script on the instance every hour, which would update the DuckDNS record, to which the DNS name of my blog is mapped with a CNAME record. This code snippet shows how you can set up your server to update dynamic DNS records with DuckDNS and cron.
-
-# Setup duck DNS (as root)
-DUCK_DOMAIN=( Your DuckDNS.org domain, without .duckdns.org )
-DUCK_TOKEN=( Your DuckDNS.org token )
-mkdir /var/log/duckdns/
-echo '#!/bin/bash' > /usr/local/bin/duckdns
-echo "echo url=\"https://www.duckdns.org/update?domains=$DUCK_DOMAIN&token=$DUCK_TOKEN&ip=\" | curl -s -k -o /var/log/duckdns/duck.log -K -" >> /usr/local/bin/duckdns
-chmod 755 /usr/local/bin/duckdns
-crontab -l > mycron
-echo "0 0 * * * /usr/local/bin/duckdns >/dev/null 2>&1" >> mycron
-crontab mycron
-rm mycron
-WordPress Migration
-Migrating the data from my old site was fairly easy. I used a plugin called UpdraftPlus to take backups of my old site, all I had to do was import the backups and restore the site. All my plugins, posts, images, everything was transported over.
-
-One of the things which used to annoy me when running WordPress on my Raspberry Pi was that it didn’t have enough RAM to run all the plugins I wanted to (if I went over the limit, MySQL would fail rather gracelessly bringing the site down). This isn’t a problem now as I have 500 Mb to use on my VPS.
-
-Making it homely
-One of the things I really liked about my PI was the personalised splash screen when I log in. I set this up using the MOTD module as well as some custom scripts and packages. Since Lightsail wordpress runs on Ubuntu, this was very easy to replicate.
-
-
-I use a module called neofetch to display some basic system stats when I log in, a module called TOILET to print my name in big shiny letters, and the GNU fortune module so that any shell session starts out with a bit of silliness.
-
-# Setup MOTD
-apt-get install fortune cowsay toilet -y
-
-add-apt-repository ppa:dawidd0811/neofetch && apt-get update -y && apt-get install neofetch
-
-cat <<EOF > config/update-motd.d/10-hello
-#! /bin/bash
-
-toilet --metal -f pagga "PLAUSIN"
-neofetch
-/usr/games/fortune
-
-EOF
-chmod 755 /etc/update-motd.d/*
-echo "" > /etc/motd
-rm /etc/update-motd.d/10-uname
-So that about wraps it up! Now that my blog is (hopefully) more up than down, hopefully you can expect a few more posts from me.
-
-luke | December 29, 2018 | No Comments

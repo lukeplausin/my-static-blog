@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 date: 2019-05-01T23:24:23+01:00
-draft: true
+draft: false
 resources:
 - name: me
   src: /static/img/about-me/me.jpg
@@ -10,6 +10,7 @@ resources:
 slug: "about"
 # thumbnail = "images/tn.png"
 description: "about"
+comment: false
 ---
 
 {{< figure src="/img/about-me/me.jpg" width="30%">}}
