@@ -3,7 +3,7 @@ title: Luke's blog goes serverless!
 description: 'My experiments with Hugo, Netlify and static site websites'
 slug: blog-goes-serverless
 date: 2019-10-14T00:06:47.504Z
-thumbnail: /assets/me-lol.jpg
+thumbnail: /assets/img/me-lol.jpg
 ---
 Ever since I first started learning about serverless computing I have been excited about the possibilities that it might bring. High performance, low maintenance sites powered by static CDNs are one such promise, however that promise is yet to be realised in the case of most users. Practically anyone who runs a site is still using some kind of CMS, probably based on one the usual suspects, Wordpress, drupal etc.
 

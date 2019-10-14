@@ -8,7 +8,7 @@ date: 2018-09-16T00:00:00+00:00
 
 Hi, and welcome to the launch of my personal site.
 
-{{<figure src="/img/hello-world/rocket_launch.gif" width="50%">}}
+{{<figure src="/assets/img/hello-world/rocket_launch.gif" width="50%">}}
 
 I’ve decided to create this site for a few different reasons:
 
@@ -21,7 +21,7 @@ I’m going to elaborate on this a little bit, in case you were curious, or inte
 
 ## Luke’s Website: The making of
 
-{{<figure src="/img/hello-world/rpi.gif" width="50%">}}
+{{<figure src="/assets/img/hello-world/rpi.gif" width="50%">}}
 
 That’s right! My site is self hosted on my own hardware – a Raspberry Pi model 1. It’s just sitting in my living room, connected directly to the router via ethernet. I have the router set up to always give the raspberry pi the same IP address when the pi retrieves its IP via DHCP, and I have port forwarding set up so that the pi can service web requests from the public internet.
 

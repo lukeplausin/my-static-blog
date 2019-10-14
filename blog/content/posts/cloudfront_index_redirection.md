@@ -11,7 +11,7 @@ I'm just getting started with my personal blog project. It started in my bedroom
 
 At some late stage during the deployment of my S3 and cloudfront based site, I realised that the front page was loading fine but most of the links were broken.
 
-{{<figure src="/img/tech/bad-index.png">}}
+{{<figure src="/assets/img/tech/bad-index.png">}}
 
 When using static site hosting in S3, the client requests are rewritten to `index.html` at any level in the bucket, however if using cloudfront then this only occurs at the root of the bucket.
 
