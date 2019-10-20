@@ -1,10 +1,10 @@
 #!/bin/bash
 
 BUCKET=luke.plaus.in
-BLOG_DIR=blog
+SITE_DIR=site
 
 echo "Compiling site"
-cd $BLOG_DIR
+cd $SITE_DIR
 rm -rf public
 hugo
 

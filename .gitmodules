@@ -2,5 +2,5 @@
 	path = aws-cf-templates
 	url = https://github.com/widdix/aws-cf-templates.git
 [submodule "blog/themes/ezhil"]
-	path = blog/themes/ezhil
+	path = site/themes/ezhil
 	url = https://github.com/vividvilla/ezhil.git
